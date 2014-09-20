@@ -9,6 +9,10 @@
 #import "HFViewController.h"
 
 @interface HFViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *myNumber;
+@property (weak, nonatomic) IBOutlet UILabel *myMultiplier;
+@property (weak, nonatomic) IBOutlet UILabel *myAnwser;
+@property (weak, nonatomic) IBOutlet UISlider *mySlider;
 
 @end
 
@@ -20,10 +24,19 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning
+-(IBAction)onCalculatebuttonpressed:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    int myNumberInt = [self.myNumber.text intValue];
+
+    int myMultiplierInt = [self.myMultiplier.text intValue];
+
+    int intAnwser = myNumberInt * myMultiplierInt;
+
+    self.myAnwser.text = [NSString stringWithFormat:@"%d", intAnwser];
+
+    if (intAnwser > 20) {
+        self.view.backgroundColor = [UIColor greenColor];
+    }
 }
 
 @end
